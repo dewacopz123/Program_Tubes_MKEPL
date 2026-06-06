@@ -1,0 +1,20 @@
+
+nav{
+    background-color: #ffff;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    box-shadow: 2px black;
+  
+}
+/* css tolong carikan saya elemen a yang berada di tag nav */
+nav .navbar-brand{
+    color: #000000;
+    font-weight: 700;
+    font-size: 2rem;
+}
+/* css tolong carikan saya class yang bernama nav-links yang berada di tag nav */
+nav  .nav-link{
+    color: #000000;
+}
+.nav-end{
+    margin-right: 200px;
+}

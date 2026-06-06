@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <title>Register</title>
+  </head>
+  <body>
+    <section
+      class="vh-100 d-flex justify-content-center align-items-center bg-light"
+    >
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card p-4">
+              <h3 class="text-center mb-4">Daftar Akun</h3>
+
+              <!-- Tampilkan Pesan Error atau Sukses -->
+              <div th:if="${error}" class="alert alert-danger" role="alert">
+                <span th:text="${error}"></span>
+              </div>
+              <div
+                id="msg"
+                th:if="${success}"
+                class="alert alert-success"
+                role="alert"
+              >
+                <span th:text="${success}"></span>
+              </div>
+
+              <form action="/register" method="POST">
+                <!-- Username Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="username">Username</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="phoneNumber">Nomor HP</label>
+                  <input
+                    type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <!-- Gender Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="jenisKelamin"
+                    >Jenis Kelamin</label
+                  >
+                  <select
+                    id="jenisKelamin"
+                    name="jenisKelamin"
+                    class="form-control"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Pilih Jenis Kelamin
+                    </option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
+                </div>
+
+                <!-- Address Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="alamat">Alamat</label>
+                  <textarea
+                    id="alamat"
+                    name="alamat"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3">
+                  <label class="form-label" for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="d-grid">
+                  <button class="btn btn-primary btn-lg" type="submit">
+                    Daftar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Modal Berhasil Registrasi -->
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    ></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

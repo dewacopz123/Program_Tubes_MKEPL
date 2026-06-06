@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="Style.css">
+  <title>Edit Kamar - AdityaKost</title>
+</head>
+
+<body>
+  <!-- Navbar Section -->
+  <div id="navbarContainer">
+    <th:block th:include="~{navbarPenjaga.html}" />
+  </div>
+
+  <!-- Edit Form Section -->
+  <div class="form container mt-5 shadow p-4 rounded bg-light">
+    <h2>Edit Kamar</h2>
+    <form th:action="@{/kamar/edit/{id}(id=${kamar.id})}" method="post" enctype="multipart/form-data">
+      <!-- Tipe Kamar -->
+      <div class="mb-3">
+        <label for="tipeKamar" class="form-label">Edit Tipe Kamar:</label>
+        <input type="text" class="form-control" id="tipeKamar" name="type" th:value="${kamar.type}" required>
+      </div>
+
+      <!-- Harga Kamar -->
+      <div class="mb-3">
+        <label for="hargaKamar" class="form-label">Edit Harga Kamar:</label>
+        <input type="text" class="form-control" id="hargaKamar" name="harga" th:value="${kamar.harga}" required>
+      </div>
+
+      <!-- Gambar Kamar -->
+      <div class="mb-3">
+        <label for="gambarKamar" class="form-label">Upload Gambar Baru (opsional):</label>
+        <input type="file" class="form-control" id="gambarKamar" name="gambarKamar">
+      </div>
+
+      <!-- Buttons for Submit and Cancel -->
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        <a class="btn btn-secondary" href="/showKamar">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

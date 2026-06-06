@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Detail Pemesanan</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Detail Pemesanan</h2>
+      <div class="card">
+        <div class="card-body">
+          <p>
+            <strong>Username Pemesan:</strong>
+            <span th:text="${username}">Username</span>
+          </p>
+          <p>
+            <strong>Durasi Pemesanan:</strong>
+            <span th:text="${pemesanan.durasi}">1</span> bulan
+          </p>
+          <p>
+            <strong>Total Biaya:</strong> Rp
+            <span th:text="${pemesanan.totalBiaya}">0</span>
+          </p>
+          <p>
+            <strong>Kamar:</strong>
+            <span th:text="${pemesanan.kamar.type}">Tipe Kamar</span>
+          </p>
+        </div>
+      </div>
+      <a href="/" class="btn btn-primary mt-3">Kembali</a>
+    </div>
+  </body>
+</html>

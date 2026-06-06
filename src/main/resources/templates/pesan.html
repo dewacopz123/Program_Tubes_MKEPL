@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemesanan Kamar</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Pemesanan Kamar</h2>
+
+      <!-- Pesan Sukses -->
+      <div
+        th:if="${successMessage != null}"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+      >
+        <span th:text="${successMessage}">Pemesanan berhasil disimpan!</span>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Form Pemesanan -->
+      <form
+        th:action="@{/pesan}"
+        method="post"
+        id="bookingForm"
+        onsubmit="hideButton()"
+      >
+        <input
+          type="hidden"
+          name="idCalonPenyewa"
+          th:value="${user.idCalonPenyewa}"
+        />
+        <input type="hidden" name="idKamar" th:value="${kamar.id}" />
+
+        <!-- Input untuk memilih kamar -->
+        <div class="form-group">
+          <label for="kamar">Kamar</label>
+          <input
+            type="text"
+            id="kamar"
+            class="form-control"
+            th:value="${kamar.type}"
+            readonly
+          />
+        </div>
+
+        <!-- Input untuk memilih durasi -->
+        <div class="form-group">
+          <label for="durasi">Durasi (bulan)</label>
+          <select id="durasi" name="durasi" class="form-control" required>
+            <option
+              th:each="i : ${#numbers.sequence(1, 12)}"
+              th:value="${i}"
+              th:text="${i} + ' bulan'"
+            ></option>
+          </select>
+        </div>
+
+        <!-- Input untuk biaya per bulan -->
+        <div class="form-group">
+          <label for="harga">Biaya per Bulan</label>
+          <input
+            type="text"
+            id="harga"
+            class="form-control"
+            th:value="${kamar.harga}"
+            readonly
+          />
+        </div>
+
+        <!-- Input untuk total biaya -->
+        <div class="form-group">
+          <label for="totalBiaya">Total Biaya</label>
+          <input
+            name="totalBiaya"
+            type="number"
+            id="totalBiaya"
+            class="form-control"
+            readonly
+          />
+        </div>
+
+        <!-- Tombol untuk submit -->
+        <button type="submit" class="btn btn-primary" id="pesanButton">
+          Pesan Sekarang
+        </button>
+
+        <!-- Tombol Kembali ke halaman utama -->
+        <a href="/" class="btn btn-secondary ml-2">Kembali</a>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS dan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Menghitung Total Biaya Berdasarkan Durasi
+      $(document).ready(function () {
+        $("#durasi").change(function () {
+          let durasi = parseInt($(this).val());
+          let harga = parseFloat($("#harga").val());
+          let totalBiaya = durasi * harga;
+          $("#totalBiaya").val(totalBiaya); // Mengisi total biaya dengan nilai float
+        });
+      });
+
+      // Menghilangkan tombol "Pesan Sekarang" setelah diklik
+      function hideButton() {
+        document.getElementById("pesanButton").style.display = "none";
+        return true;
+      }
+    </script>
+  </body>
+</html>
