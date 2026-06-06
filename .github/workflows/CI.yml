@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: name: Java CI
+name: Java CI
 
 on:
   push:
