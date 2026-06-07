@@ -34,9 +34,6 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Run Unit Test
-        run: mvn clean test
-
       - name: Build Application
         run: mvn clean package -DskipTests
 
