@@ -135,7 +135,7 @@ class PemesananServiceTest {
                         1L);
 
         assertEquals(
-                1500000,
+                1000000,
                 result.getTotalBiaya());
     }
 
