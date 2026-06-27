@@ -15,7 +15,7 @@
 
     <groupId>com.adityakost</groupId>
     <artifactId>demomvc</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.1</version>
     <name>demomvc</name>
     <description>Demo project for Spring Boot</description>
 
